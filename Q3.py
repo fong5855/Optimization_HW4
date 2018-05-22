@@ -7,7 +7,7 @@ def cost_function(x):
 
 
 def cons1(x):
-    return x[0] - 2*x[1] - x[2] - 1
+    return x[0] + 2*x[1] - x[2] - 1
 
 
 def cons2(x):
@@ -16,8 +16,8 @@ def cons2(x):
 
 if __name__ == '__main__':
     x0 = np.asarray([5, 5, 5])
-    con = ({'type': 'eq', 'fun': cons1},
-           {'type': 'eq', 'fun': cons2})
+    con = ({'type': 'ineq', 'fun': cons1},
+           {'type': 'ineq', 'fun': cons2})
 
     con1 = np.zeros(9)
     res = spo.minimize(cost_function, x0, constraints=con, bounds=((0, None), (0, None), (None, None)))
